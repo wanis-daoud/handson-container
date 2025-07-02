@@ -14,6 +14,6 @@ FROM nginx:alpine
 EXPOSE 80
 
 # on récupère le résultat de notre conteneur de build
-COPY --from=builder /app/dist /dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 CMD ["nginx", "-g", "daemon off;"]

@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
+    
     env:
       AWS_REGION: eu-north-1
       FRONT_IMAGE_NAME: clickcat-frontend
@@ -46,8 +46,8 @@ jobs:
       # 5. Define image URIs
       - name: Set image names
         run: |
-          echo "FRONT_IMAGE=662195598891.dkr.ecr.eu-north-1.amazonaws.com/${{ env.FRONT_IMAGE_NAME }}:latest" >> $GITHUB_ENV
-          echo "BACK_IMAGE=662195598891.dkr.ecr.eu-north-1.amazonaws.com/${{ env.BACK_IMAGE_NAME }}:latest" >> $GITHUB_ENV
+          echo "FRONT_IMAGE=662195598891.dkr.ecr.eu-north-1.amazonaws.com/${{ env.FRONT_IMAGE_NAME }}:yanis-${{ github.run_number }}" >> $GITHUB_ENV
+          echo "BACK_IMAGE=662195598891.dkr.ecr.eu-north-1.amazonaws.com/${{ env.BACK_IMAGE_NAME }}:yanis-${{ github.run_number }}" >> $GITHUB_ENV
 
       # 6. Build and push frontend image
       - name: Build and push frontend image
@@ -59,4 +59,4 @@ jobs:
       - name: Build and push backend image
         run: |
           docker build -f step3.Dockerfile -t $BACK_IMAGE .
-          docker push $BACK_IMAGE
+          docker push $BACK_IMAG

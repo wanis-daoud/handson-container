@@ -2,7 +2,7 @@ FROM node:18 AS builder
 
 # on se place dans un dossier de travail et on y copie tout le code de l'application
 WORKDIR /app
-COPY frontend app/
+COPY frontend /app
 
 # on package l'application
 RUN npm install && npm run build
